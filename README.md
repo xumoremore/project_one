@@ -3,7 +3,7 @@
 
 ## 目录
 - [简介](#简介)
-- [安装](#安装)
+- [环境](#环境)
 - [解决方案](#解决方案)
 
 ## 简介
@@ -17,8 +17,9 @@
 ![评价指标](https://github.com/xumoremore/project_one/blob/main/data/readme_img/loss.png)
 
 
-## 安装
-
+## 环境
+    python3.6
+    numpy>1.15
     pandas==1.1.3
     sklearn==0.19.1
     matplotlib==3.3.2
