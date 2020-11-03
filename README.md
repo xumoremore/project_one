@@ -1,4 +1,4 @@
-# 二手车交易价格预测
+# 预测
 
 
 ## 目录
@@ -27,13 +27,32 @@
 
 ## 解决方案
 
+
+```
+flow
+st=>start: 开始
+e=>end: 登录
+io1=>inputoutput: 输入用户名密码
+sub1=>subroutine: 数据库查询子类
+cond=>condition: 是否有此用户
+cond2=>condition: 密码是否正确
+op=>operation: 读入用户信息
+
+st->io1->sub1->cond
+cond(yes,right)->cond2
+cond(no)->io1(right)
+cond2(yes,right)->op->e
+cond2(no)->io1
+```
+
+
 **完成情况：**
 - [x] 数据探索
 - [x] 数据预处理
 - [x] 特征工程
 - [ ] 特征筛选
 - [x] 模型训练
-- [ ] 模型融合
+- [x] 模型融合
 - [ ] 分析报告
 
 **技术栈：**`特征工程` , `神经网络`, `lightGBM` , `交叉验证`
