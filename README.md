@@ -13,8 +13,8 @@
 测试数据集：5万
 
 数据集包含特征和模型评价指标如下：
-![字段](https://github.com/xumoremore/project_one/blob/main/data/readme_img/columns.png)
-![评价指标](https://github.com/xumoremore/project_one/blob/main/data/readme_img/loss.png)
+![字段](https://github.com/xumoremore/project_one/blob/main/docs/columns.png)
+![评价指标](https://github.com/xumoremore/project_one/blob/main/docs/loss.png)
 
 
 ## 环境
@@ -27,23 +27,17 @@
 
 ## 解决方案
 
+### 神经网络
 
-```
-flow
-st=>start: 开始
-e=>end: 登录
-io1=>inputoutput: 输入用户名密码
-sub1=>subroutine: 数据库查询子类
-cond=>condition: 是否有此用户
-cond2=>condition: 密码是否正确
-op=>operation: 读入用户信息
+数据方面，原始数据字段30个，剔除掉部份无用字段后对剩下原始特征做特征组合，交叉，变换等构造出1792个特征，然后使用五层的全连接神经网络对该特征进行学习。模型结构如下。
+网络参数：
+learning_rate=0.0001,
+epochs=400,
+batch_size=128
+![全连接网络结构](https://github.com/xumoremore/project_one/blob/main/docs/fcn.png)
 
-st->io1->sub1->cond
-cond(yes,right)->cond2
-cond(no)->io1(right)
-cond2(yes,right)->op->e
-cond2(no)->io1
-```
+对所有的数据分成4折，采用交叉验证融合模型最终得分，图为其中一折的测试集MAE得分。
+![测试集mae得分](https://github.com/xumoremore/project_one/blob/main/docs/MAE.png)
 
 
 **完成情况：**
@@ -54,6 +48,8 @@ cond2(no)->io1
 - [x] 模型训练
 - [x] 模型融合
 - [ ] 分析报告
+
+
 
 **技术栈：**`特征工程` , `神经网络`, `lightGBM` , `交叉验证`
 
