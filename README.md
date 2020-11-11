@@ -29,17 +29,6 @@
 
 ### 神经网络
 
-数据方面，原始数据字段30个，剔除掉部份无用字段后对剩下原始特征做特征组合，交叉，变换等构造出1792个特征，然后使用五层的全连接神经网络对该特征进行学习。模型结构如下。
-网络参数：
-learning_rate=0.0001,
-epochs=400,
-batch_size=128
-![全连接网络结构](https://github.com/xumoremore/project_one/blob/main/docs/fcn.png)
-
-对所有的数据分成4折，采用交叉验证融合模型最终得分，图为其中一折的测试集MAE得分。
-![测试集mae得分](https://github.com/xumoremore/project_one/blob/main/docs/MAE.png)
-
-
 **完成情况：**
 - [x] 数据探索
 - [x] 数据预处理
@@ -48,6 +37,30 @@ batch_size=128
 - [x] 模型训练
 - [x] 模型融合
 - [ ] 分析报告
+
+数据方面，原始数据字段30个，剔除掉部份无用字段后对剩下原始特征做特征组合，交叉，变换等构造出1792个特征，然后使用五层的全连接神经网络对该特征进行学习。模型结构如下。
+网络参数：
+
+    learning_rate=0.0001,
+    epochs=400,
+    batch_size=128
+    参数初始化：if self.i_fold == 0:
+                nn.init.normal_(m.weight)
+            if self.i_fold ==1:  
+                nn.init.xavier_normal_(m.weight)
+            else:
+                nn.init.kaiming_normal_(m.weight)
+            if m.bias is not None:
+                nn.init.constant_(m.bias, 0)
+    
+![全连接网络结构](https://github.com/xumoremore/project_one/blob/main/docs/fcn.png)
+
+对所有的数据分成4折，采用交叉验证融合模型最终得分，图为其中一折的测试集MAE得分。
+
+![测试集mae得分](https://github.com/xumoremore/project_one/blob/main/docs/MAE.png)
+
+
+
 
 
 
